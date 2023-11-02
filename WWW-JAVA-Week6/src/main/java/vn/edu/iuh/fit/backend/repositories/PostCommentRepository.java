@@ -1,4 +1,7 @@
 package vn.edu.iuh.fit.backend.repositories;
 
-public class PostCommentRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import vn.edu.iuh.fit.backend.models.PostComment;
+
+public interface PostCommentRepository extends JpaRepository<PostComment, Long> {
 }

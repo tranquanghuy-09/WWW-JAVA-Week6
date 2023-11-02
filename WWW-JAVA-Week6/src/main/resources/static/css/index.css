@@ -1,0 +1,18 @@
+nav{
+    background-color: RGB(243, 243, 243);
+}
+#logo{
+    font-size: 25px;
+}
+ul li{
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    /* justify-content: space-between; */
+}
+#user{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 25px;
+}
