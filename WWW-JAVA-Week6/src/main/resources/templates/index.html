@@ -18,7 +18,7 @@
 
 <body>
 <nav class="navbar navbar-expand-sm navbar-light" style="position: fixed; width: 100%; z-index: 999; ">
-    <div class="container">
+    <div class="container px-5">
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -39,66 +39,262 @@
     </div>
 </nav>
 
-<div class="mx-auto" style="position: absolute; width: 100%; margin-top: 80px;">
+<div class="mx-auto" style="position: absolute; width: 100%; margin-top: 80px;" id="main">
     <div id="content" class="col-7 mx-auto">
-        <div style="display: block; line-height: 1.4;" class="border my-3">
-            <div style="box-sizing: border-box; padding: 12px 12px 0px; position: relative;">
-                <div style="display: flex;">
-                    <a>
-                        <img src="../img/user2.jpeg" class="img-circle" alt="" srcset="" style="width: 50px; height: 50px;border-radius: 50%;">
-                    </a>
-                    <div>
-                        <span style="display: inline-block; margin-left: 10px;">Trần Quang Huy</span>
-                        <span style="display: block;"></span>
+        <div id="new-post" style="padding: 15px 0px;">
+            <div class="container bolder bolder-dark">
+                <div class="row">
+                    <div class="col-1" >
+                        <a href="" >
+                            <img src="../img/user2.jpeg" alt="" srcset=""
+                                 style="width: 50px; height: 50px;border-radius: 50%;">
+                        </a>
                     </div>
+                    <div class="col-11">
+                        <div>
+                            <button type="button" style="border: none; background-color: white; width: 100%;" data-toggle="modal" data-target="#addPostModal" data-whatever="@getbootstrap">
+                                <input type="text"
+                                       style="width: 100%; background-color: RGB(239, 240, 240); padding: 8px 20px; border-radius: 20px; border: 1px solid RGB(217, 219, 221);"
+                                       placeholder="What do you want to ask or share?">
+                            </button>
 
+                        </div>
+                    </div>
                 </div>
-                <div id="" style="margin-top: 20px;">
-                    <h5>What is something Vietnamese people didn't realise was very Vietnamese until they went abroad?</h5>
-                    <p style="box-sizing: border-box; text-align: justify; overflow-wrap: anywhere; direction: ltr;">This is a real picture of me and my classmates visiting our high school teacher on New Year’s a few years back, about 10 years after our graduation! We do this at least once every year, visiting a handful of the teachers that spent the most time with us. The number has been shrinking every year because more of us have got married and have family obligations, but generally, we do make an effort to make it happen. I am pretty sure we will keep doing this as long as they are alive. During the Tet holiday (Lunar New Year), our teachers can be visited by hundreds of old students, sometimes multiple classes at once. Quite amazing they can remember us all!
+                <div class="row" style="text-align: center; padding: 5px 0px; margin-top: 5px;">
+                    <div class="col">
+                        <a href="" style="display: block;">
+                            <i class="fa-regular fa-circle-question"></i>
+                            <span>Ask</span>
+                        </a>
 
-                        <br>The visit is a boisterous occasion with a lot of good-spirited gossiping going around and updating each other how everyone is doing after a year apart.
+                    </div>
+                    <span>|</span>
+                    <div class="col">
+                        <a href="" style="display: block;">
+                            <i class="fa-solid fa-pager"></i>
+                            <span>Answer</span>
+                        </a>
 
-                        <br>In Vietnam, high school students stay in the same class with a couple of the same key teachers throughout three years. It is enough time to build really strong bonds and friendships, among students, and between teachers and students. We look up to them not merely as imparters of knowledge, but mentors, counselors and inspirers. As in my case, our teachers played a significant role in our moral and emotional development, helping us navigate the turbulent yet exhilarating years of adolescence and young adulthood, for which we feel deeply indebted. I don’t know whether this tradition is still as strong today, but I certainly hope we continue to uphold it.</p>
-                </div>
-                <div style="font-size: 16px;">
-                    <a href="">
-                        <i class="fa-regular fa-comment"></i>
-                        <span> 2</span>
-                    </a>
+                    </div>
+                    <span>|</span>
+                    <div class="col">
+                        <a href="" style="display: block;">
+                            <i class="fa-solid fa-pencil"></i>
+                            <span>Post</span>
+                        </a>
+
+                    </div>
                 </div>
             </div>
         </div>
-        <div style="display: block; line-height: 1.4;" class="border my-3">
-            <div style="box-sizing: border-box; padding: 12px 12px 0px; position: relative;">
-                <div style="display: flex;">
-                    <a>
-                        <img src="../img/user2.jpeg" class="img-circle" alt="" srcset="" style="width: 50px; height: 50px;border-radius: 50%;">
-                    </a>
-                    <div>
-                        <span style="display: inline-block; margin-left: 10px;">Trần Quang Huy</span>
-                        <span style="display: block;"></span>
+
+    <div th:each="post : ${posts}">
+        <div id="post">
+            <div style="display: block; line-height: 1.4;" class="border my-3">
+                <div style="box-sizing: border-box; padding: 12px 20px 12px; position: relative;" >
+                    <div style="display: flex;">
+                        <a>
+                            <img th:src="${post.getAuthor().getUrlUserImage()}" class="img-circle" alt="" srcset=""
+                                 style="width: 50px; height: 50px;border-radius: 50%;">
+                        </a>
+                        <div>
+                                <span
+                                        style="display: inline-block; margin-left: 10px; font-size: 18px; font-weight: bold;"
+                                        th:text="${post.getAuthor().getFirstName() + ' ' + post.getAuthor().getMiddleName() + ' ' + post.getAuthor().getLastName()}"></span>
+                            <span style="display: block; margin-left: 10px; font-size: 13px; margin-top: 2px;"><i
+                                    class="fa-solid fa-globe"></i> Everyone</span>
+                        </div>
+
+                    </div>
+                    <div
+                         style="margin-top: 20px; box-sizing: border-box; text-align: justify; overflow-wrap: anywhere; direction: ltr;">
+                        <h5 th:text="${post.getTitle()}"></h5>
+                        <p style="box-sizing: border-box; text-align: justify; overflow-wrap: anywhere; direction: ltr;" th:text="${post.getContent()}">
+
+                        </p>
+                    </div>
+                    <div style="font-size: 18px;">
+                        <a href="#" th:id="${'show-comment-'+post.getId()}">
+                            <i class="fa-regular fa-comment"></i>
+                            <span th:text="${post.getPostComments().size()}"></span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div th:id="${'add-comment-'+post.getId()}" style="display: none;">
+                <div style="box-sizing: border-box; display: flex; padding: 10px 0px 10px 0px; background-color: RGB(239, 240, 240); align-items: center;"
+                     class="col-12">
+                    <div class="col-1">
+                        <a style="box-sizing: border-box;" href="">
+                            <img th:src="${post.getAuthor().getUrlUserImage()}" alt="" srcset=""
+                                 style="width: 40px; height: 40px;border-radius: 50%;">
+                        </a>
+                    </div>
+                    <div class="col-8" style="display: flex; align-items: center; ">
+                        <input type="text"
+                               style="border: none; border-radius: 30px; padding: 15px 20px; height: 100%; width: 100%;"
+                               placeholder="Add a comment...">
+                    </div>
+                    <div class="col-3" style="display: flex; align-items: center; justify-content: center;">
+                        <button style="border-radius: 20px;" class="btn btn-primary px-3">Add comment</button>
+                    </div>
+                </div>
+                <div id="list-comment" style="border: 1px solid RGB(217, 219, 221); padding-left: 20px; padding-right: 15px;" th:each="comment : ${post.getPostComments()}">
+                    <div id="comment1" class="col-12"
+                         style="margin-top: 15px; border-bottom: 1px solid RGB(217, 219, 221); padding-bottom: 10px;">
+                        <div class="row">
+                            <div class="col-1 " style="display: flex; justify-content: center; ">
+                                <a href="">
+                                    <img th:src="${comment.getUser().getUrlUserImage()}" alt="" srcset=""
+                                         style="width: 40px; height: 40px;border-radius: 50%;">
+                                </a>
+                            </div>
+                            <div class="col-11">
+                                <span style="display: block; font-size: 18px; font-weight: bolder;" th:text="${comment.getUser().getFirstName()+' '+comment.getUser().getMiddleName()+' '+comment.getUser().getLastName()}"></span>
+                                <span
+                                        style="display: block; text-align: justify; overflow-wrap: anywhere; direction: ltr;" th:text="${comment.getContent()}"></span>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
-                <div id="" style="margin-top: 20px;">
-                    <h5>What is something Vietnamese people didn't realise was very Vietnamese until they went abroad?</h5>
-                    <p style="box-sizing: border-box; text-align: justify; overflow-wrap: anywhere; direction: ltr;">This is a real picture of me and my classmates visiting our high school teacher on New Year’s a few years back, about 10 years after our graduation! We do this at least once every year, visiting a handful of the teachers that spent the most time with us. The number has been shrinking every year because more of us have got married and have family obligations, but generally, we do make an effort to make it happen. I am pretty sure we will keep doing this as long as they are alive. During the Tet holiday (Lunar New Year), our teachers can be visited by hundreds of old students, sometimes multiple classes at once. Quite amazing they can remember us all!
+            </div>
 
-                        <br>The visit is a boisterous occasion with a lot of good-spirited gossiping going around and updating each other how everyone is doing after a year apart.
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    // Lặp qua tất cả các thẻ <a> có id bắt đầu bằng "show-comment-"
+                    var showCommentLinks = document.querySelectorAll("a[id^='show-comment-']");
 
-                        <br>In Vietnam, high school students stay in the same class with a couple of the same key teachers throughout three years. It is enough time to build really strong bonds and friendships, among students, and between teachers and students. We look up to them not merely as imparters of knowledge, but mentors, counselors and inspirers. As in my case, our teachers played a significant role in our moral and emotional development, helping us navigate the turbulent yet exhilarating years of adolescence and young adulthood, for which we feel deeply indebted. I don’t know whether this tradition is still as strong today, but I certainly hope we continue to uphold it.</p>
+                    showCommentLinks.forEach(function (showCommentLink) {
+                        var postId = showCommentLink.id.replace("show-comment-", ""); // Lấy postId từ id
+
+                        var addCommentDiv = document.getElementById("add-comment-" + postId);
+                        addCommentDiv.style.display = "none";
+
+                        showCommentLink.addEventListener("click", function (event) {
+                            event.preventDefault(); // Ngăn chặn mặc định của thẻ a (nếu href không trống)
+
+                            if (addCommentDiv.style.display === "none") {
+                                addCommentDiv.style.display = "block";
+                            } else {
+                                addCommentDiv.style.display = "none";
+                            }
+                        });
+                    });
+                });
+            </script>
+        </div>
+    </div>
+
+        <div id="post">
+            <div style="display: block; line-height: 1.4;" class="border my-3">
+                <div style="box-sizing: border-box; padding: 12px 12px 0px; position: relative;">
+                    <div style="display: flex;">
+                        <a>
+                            <img src="../img/user2.jpeg" class="img-circle" alt="" srcset=""
+                                 style="width: 50px; height: 50px;border-radius: 50%;">
+                        </a>
+                        <div>
+                            <span style="display: inline-block; margin-left: 10px;">Trần Quang Huy</span>
+                            <span style="display: block;"></span>
+                        </div>
+
+                    </div>
+                    <div id="" style="margin-top: 20px;">
+                        <h5>What is something Vietnamese people didn't realise was very Vietnamese until they went
+                            abroad?</h5>
+                        <p
+                                style="box-sizing: border-box; text-align: justify; overflow-wrap: anywhere; direction: ltr;">
+                            This is a real picture of me and my classmates visiting our high school teacher on New
+                            Year’s a few years back, about 10 years after our graduation! We do this at least once
+                            every year, visiting a handful of the teachers that spent the most time with us. The
+                            number has been shrinking every year because more of us have got married and have family
+                            obligations, but generally, we do make an effort to make it happen. I am pretty sure we
+                            will keep doing this as long as they are alive. During the Tet holiday (Lunar New Year),
+                            our teachers can be visited by hundreds of old students, sometimes multiple classes at
+                            once. Quite amazing they can remember us all!
+
+                            <br>The visit is a boisterous occasion with a lot of good-spirited gossiping going
+                            around and updating each other how everyone is doing after a year apart.
+
+                            <br>In Vietnam, high school students stay in the same class with a couple of the same
+                            key teachers throughout three years. It is enough time to build really strong bonds and
+                            friendships, among students, and between teachers and students. We look up to them not
+                            merely as imparters of knowledge, but mentors, counselors and inspirers. As in my case,
+                            our teachers played a significant role in our moral and emotional development, helping
+                            us navigate the turbulent yet exhilarating years of adolescence and young adulthood, for
+                            which we feel deeply indebted. I don’t know whether this tradition is still as strong
+                            today, but I certainly hope we continue to uphold it.
+                        </p>
+                    </div>
+                    <div style="font-size: 16px;">
+                        <a href="">
+                            <i class="fa-regular fa-comment"></i>
+                            <span> 2</span>
+                        </a>
+                    </div>
                 </div>
-                <div style="font-size: 16px;">
-                    <a href="">
-                        <i class="fa-regular fa-comment"></i>
-                        <span> 2</span>
-                    </a>
-                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addPostModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Recipient:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Message:</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send message</button>
             </div>
         </div>
     </div>
 </div>
+
+
+<!--<script>-->
+<!--    document.addEventListener("DOMContentLoaded", function () {-->
+<!--        var showCommentLink = document.getElementById("show-comment-5");-->
+<!--        var addCommentDiv = document.getElementById("add-comment");-->
+
+<!--        addCommentDiv.style.display = "none";-->
+
+<!--        showCommentLink.addEventListener("click", function (event) {-->
+<!--            event.preventDefault(); // Ngăn chặn mặc định của thẻ a (nếu href không trống)-->
+
+<!--            if (addCommentDiv.style.display === "none") {-->
+<!--                addCommentDiv.style.display = "block";-->
+<!--            } else {-->
+<!--                addCommentDiv.style.display = "none";-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+
+
 
 </body>
 

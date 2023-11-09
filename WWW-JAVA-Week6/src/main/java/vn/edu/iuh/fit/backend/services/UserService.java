@@ -1,6 +1,7 @@
 package vn.edu.iuh.fit.backend.services;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 import vn.edu.iuh.fit.backend.models.User;
 import vn.edu.iuh.fit.backend.repositories.UserRepository;
 
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Slf4j
+@Service
 public class UserService {
     private final UserRepository userRepository;
 
@@ -28,5 +30,8 @@ public class UserService {
     }
     public List<User> findAll(){
         return userRepository.findAll();
+    }
+    public long count(){
+        return userRepository.count();
     }
 }

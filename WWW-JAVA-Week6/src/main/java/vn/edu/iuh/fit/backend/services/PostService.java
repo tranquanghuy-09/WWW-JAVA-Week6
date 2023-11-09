@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import vn.edu.iuh.fit.backend.models.Post;
@@ -72,5 +73,11 @@ public class PostService {
         Sort sort = Sort.by(Sort.Direction.fromString(sortDirection), sortBy);
         PageRequest pageRequest = PageRequest.of(pageNo-1, pageSize, sort);
         return postRepository.findAll(pageRequest);
+    }
+    public long count(){
+        return postRepository.count();
+    }
+    public Page<Post> findAllByPublishedWithComments(boolean published, Pageable pageable){
+        return postRepository.findAllByPublishedWithComments(published, pageable);
     }
 }

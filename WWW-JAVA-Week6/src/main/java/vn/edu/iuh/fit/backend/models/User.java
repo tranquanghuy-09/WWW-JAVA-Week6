@@ -46,4 +46,22 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private Set<PostComment> postComments = new LinkedHashSet<>();
+
+    @Column(name = "url_user_image")
+    private String urlUserImage;
+
+    public User(long id, String firstName, String middleName, String lastName, String mobile, String email, String passwordHash, Instant registeredAt, Instant lastLogin, String intro, String profile, String urlUserImage) {
+        this.id = id;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.mobile = mobile;
+        this.email = email;
+        this.passwordHash = passwordHash;
+        this.registeredAt = registeredAt;
+        this.lastLogin = lastLogin;
+        this.intro = intro;
+        this.profile = profile;
+        this.urlUserImage = urlUserImage;
+    }
 }

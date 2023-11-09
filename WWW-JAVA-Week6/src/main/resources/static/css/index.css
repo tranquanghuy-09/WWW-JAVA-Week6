@@ -1,5 +1,11 @@
+body{
+    background-color: RGB(217, 219, 221);
+}
+#new-post, #post{
+    background-color: rgb(255, 255, 255, 0.9);
+}
 nav{
-    background-color: RGB(243, 243, 243);
+    background-color: white;
 }
 #logo{
     font-size: 25px;
