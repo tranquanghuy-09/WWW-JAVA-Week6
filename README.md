@@ -1,5 +1,5 @@
 # Practice week 6 of WWW programming (Java) 
-# Create web pages that act like a blog web site.
+Create web pages that act like a blog web site.
     <table style="border-collapse: collapse;">
         <tr>
             <td style="border: 1px solid black;padding: 10px;">FullName: </td>
@@ -14,10 +14,7 @@
 <img width="682" alt="Ảnh màn hình 2023-11-09 lúc 08 53 48" src="https://github.com/tranquanghuy-09/WWW-JAVA-Week6/assets/107989088/cef8d475-93dd-4d40-9078-ea7ea1dd98c1">
 
 # Function list:
-    <ul style="list-style-type:circle; text-align: justify; line-height: 1.5;">
-        <li></li>
-        <li></li>
-        <li></li>
+<ul style="list-style-type:circle; text-align: justify; line-height: 1.5;">
         <li></li>
         <li></li>
         <li></li>
