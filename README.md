@@ -17,7 +17,7 @@ Create web pages that act like a blog web site.
 <ul style="list-style-type:circle; text-align: justify; line-height: 1.5;">
         <li>Login</li>
         <li>Add post</li>
-        <li>Add comment for post</li>
+        <li>See and add comment for post</li>
         <li>...</li>
     </ul>
 
